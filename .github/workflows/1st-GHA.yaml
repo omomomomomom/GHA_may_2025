@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo string
-        run: echo 'hello world from phone'
+        run: eho 'hello world from phone'
