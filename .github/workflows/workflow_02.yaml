@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step 01
-        run: echo "::error title:error he::error he"
+        run: echo "::error title:error he::error he 1"
       - name: step 02
-        run:  echo "::debug title:debug he::debug he"
+        run:  echo "::debug title:debug he::debug he 2"
       - name: step 03
-        run:  echo "::notice title:notice he::notice he"
+        run:  echo "::notice title:notice he::notice he 3"
       - name: step 04
-        run: echo "::warning title:warning he::warning he"
+        run: echo "::warning title:warning he::warning he 4"
       - name: add-mask
         run: "echo ::add-mask::Pa55w0rd"
       - run: "echo Pa55w0rd"
