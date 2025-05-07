@@ -7,7 +7,6 @@ jobs:
     steps:
       - name: echo string
         run: echo "hello world"
-      - run: doesnoteexist
       - run: |
           python3 --version
           echo "print('hello from python')" > script.py
