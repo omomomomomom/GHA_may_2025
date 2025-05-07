@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: step 01
         run: "echo ::error title: error he:: error he"
-      - run:  "echo ::debug title: debug he:: debug he"
-      - run:  "echo ::notice title: notice he:: notice he"
-      -  run: "echo ::warning title: warning he:: warning he"
+      - name: step 02
+        run:  "echo ::debug title: debug he:: debug he"
+      - name: step 03
+        run:  "echo ::notice title: notice he:: notice he"
+      - name: step 04
+        run: "echo ::warning title: warning he:: warning he"
