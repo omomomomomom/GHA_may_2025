@@ -1,6 +1,5 @@
 name: "1st yaml"
-
-on:
+on: 
   push:
     branches:
       - main
@@ -10,4 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo string
-        run: eho 'hello world from phone'
+        run: echo "hello world"
+      - name: multiple line
+        run: |
+          node -v
+          npm -v
