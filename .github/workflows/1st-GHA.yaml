@@ -9,7 +9,7 @@ jobs:
         run: echo "hello world"
       - run: |
           python3 --version
-          echo "print("hello from python")" > script.py
+          echo "print('hello from python')" > script.py
           python3 script.py
   run_parallel_job:
     runs-on: windows-latest
