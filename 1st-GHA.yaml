@@ -1,5 +1,5 @@
 name: "1st yaml"
-on: [push]
+on: [commit]
 
 jobs:
   run_shell_cmd:
