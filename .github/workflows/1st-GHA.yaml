@@ -7,6 +7,7 @@ jobs:
     steps:
       - name: echo string
         run: echo "hello world"
+      - run: doesnotexist
   run_parallel_job:
     runs-on: windows-latest
     steps:
