@@ -16,3 +16,5 @@ jobs:
       - name: add-mask
         run: "echo ::add-mask::Pa55w0rd"
       - run: "echo Pa55w0rd"
+      - run: echo "::warning::warring 02 he"
+      
