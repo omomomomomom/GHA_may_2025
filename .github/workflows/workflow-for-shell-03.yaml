@@ -21,6 +21,9 @@ jobs:
           Get-Location
           dir
           echo $env:GITHUB_SHA
+      - name: python script
+        run: |
+          print("hello world")
     
   
     
