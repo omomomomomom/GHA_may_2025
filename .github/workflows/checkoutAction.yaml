@@ -1,16 +1,16 @@
-name: js workflow
-on:
-  push:
-    branches: [main]
+name: workflow for the action 
+on: [push]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        id: Checkout_code
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Omkar'
-      - name: output
-        run: |
-          echo "${{steps.Checkout_code.outputs.time }}"
+    job_01:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              id: checkout_code
+              uses: actions/hello-world-javascript-action@v1
+              with:
+                who-to-greet: 'Mona the Octocat'
+            - name: provide o/p
+              run: |
+                    echo "Hello ${{ github.actor }}!"
+                    echo "${step.checkout_code.outputs.time}}"
+
