@@ -13,4 +13,4 @@ jobs:
           who-to-greet: 'Omkar'
       - name: output
         run: |
-          echo "${{steps.Checkout_code.outputs.time }}
+          echo "${{steps.Checkout_code.outputs.time }}"
