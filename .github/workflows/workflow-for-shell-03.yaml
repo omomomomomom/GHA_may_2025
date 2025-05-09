@@ -22,6 +22,7 @@ jobs:
           dir
           echo $env:GITHUB_SHA
       - name: python script
+        shell: python
         run: |
           print("hello world")
     
