@@ -16,7 +16,8 @@ jobs:
       - name: step 01
         run: |
           pwd
-          ls -a
+          Get-Location
+          dir
           echo $GITHUB_SHA
     
   
