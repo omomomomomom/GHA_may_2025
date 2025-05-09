@@ -1,1 +1,16 @@
-
+name: js workflow
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        id: Checkout_code
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: 'Omkar'
+      - name: output
+        run: |
+          echo "${{steps.Checkout_code.outputs.time }}
