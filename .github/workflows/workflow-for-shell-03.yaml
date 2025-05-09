@@ -14,7 +14,6 @@ jobs:
       
   job_on_windows:
     runs-on: ubuntu-latest
-    
     steps:
       - name: step 01
         run: |
