@@ -1,0 +1,2 @@
+name: guthub workflow for the shell
+on: [push
