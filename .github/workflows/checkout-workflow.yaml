@@ -1,1 +1,16 @@
-
+name: checkout brnach
+on: [push]
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout step
+        run: |
+          ls
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.$GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+          git fetch origin
+          git checout main
+      - name: list file after
+        run: 
+          ls -a
