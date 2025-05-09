@@ -12,5 +12,5 @@ jobs:
             - name: provide o/p
               run: |
                     echo "Hello ${{ github.actor }}!"
-                    echo "${step.checkout_code.outputs.time}}"
+                    echo "${{step.checkout_code.outputs.time}}"
 
