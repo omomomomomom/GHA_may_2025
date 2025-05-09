@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step 01
+        shell: bash
         run: |
           pwd
           Get-Location
