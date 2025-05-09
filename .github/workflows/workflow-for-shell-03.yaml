@@ -8,8 +8,8 @@ jobs:
         run: |
           pwd
           touch echo"sample text" > file01.txt
-          cat file01.txt
           ls -a
+          cat file01.txt
           echo $GITHUB_SHA
       
   job_on_windows:
