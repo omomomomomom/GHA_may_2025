@@ -7,7 +7,7 @@ jobs:
       - name: step 01
         run: |
           pwd
-          echo"sample text" > file01.txt
+          echo "sample text" > file01.txt
           ls -a
           cat file01.txt
           echo $GITHUB_SHA
