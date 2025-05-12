@@ -8,8 +8,9 @@ on:
     branches:
       - chilld-branch
       - main
+    types: [opened, synchronize, reopened]
   issue_comment:
-    types: [created]
+    types: [created, edited, deleted]
 jobs:
   job_01:
     runs-on: ubuntu-latest
@@ -20,5 +21,5 @@ jobs:
       - name: Check for events
         run: |
           echo $GITHUB_SHA
-          echo $GITHUB_REF
+          echo $GITHUB_REF 
           echo $GITHUB_EVENT_NAME
