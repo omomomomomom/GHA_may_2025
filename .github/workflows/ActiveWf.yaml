@@ -10,7 +10,7 @@ on:
       - main
     types: [opened, synchronize, reopened]
   issues:
-    types: [opened ]
+    types: [opened]
 jobs:
   job_01:
     runs-on: ubuntu-latest
