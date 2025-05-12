@@ -1,5 +1,14 @@
 name: new wf for checking the events
-on: [push, pull_request, issues]
+on:
+  push:
+    branches:
+      - main
+      - chilld-branch
+  pull_request:
+    branches:
+      - chilld-branch
+      - main
+  workflow_dispatch:
 jobs:
   job_01:
     runs-on: ubuntu-latest
@@ -7,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check for events changes
+      - name: Check for events
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
