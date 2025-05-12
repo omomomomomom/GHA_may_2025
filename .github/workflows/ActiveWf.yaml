@@ -1,14 +1,13 @@
 name: new wf for checking the events
 on:
   push:
-    branches:
-      - main
-      - chilld-branch
   pull_request:
     branches:
       - chilld-branch
       - main
-  workflow_dispatch:
+    types: [opened, synchronize, reopened, closed]
+  issues:
+    types: [opened]
 jobs:
   job_01:
     runs-on: ubuntu-latest
