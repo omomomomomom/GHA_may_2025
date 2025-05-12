@@ -10,7 +10,7 @@ jobs:
       - name: checkout step
         uses: actions/checkout@v2
         with:
-          repository: ${{ github.repository.omomomomomom }}/demo-repo-by-terraform-01
+          repository: ${{ github.repository.omomomomomom }}/{demo-repo-by-terraform-01}
       - name: check 02
         run: |
           ls -al
