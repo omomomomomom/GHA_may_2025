@@ -4,12 +4,11 @@ jobs:
   job_01:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout step
+      - name: check 01
         run: |
-          git init
-          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
-          git fetch origin 
-          git checkout main
-      - name: list file after
-        run: 
-          ls -a
+          ls -al
+      - name: checkout step
+        run: actions/checkout@v2
+      - name: check 02
+        run: |
+          ls -al
