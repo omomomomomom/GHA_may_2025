@@ -8,10 +8,8 @@ on:
     branches:
       - chilld-branch
       - main
-  issues:
-    branches:
-      - chilld-branch
-      - main
+  issue_comment:
+    types: [created]
 jobs:
   job_01:
     runs-on: ubuntu-latest
