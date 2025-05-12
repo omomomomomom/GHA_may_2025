@@ -8,7 +8,7 @@ jobs:
         run: |
           ls -al
       - name: checkout step
-        run: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: check 02
         run: |
           ls -al
