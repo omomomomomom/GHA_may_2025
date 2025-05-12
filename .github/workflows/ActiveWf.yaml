@@ -9,8 +9,8 @@ on:
       - chilld-branch
       - main
     types: [opened, synchronize, reopened]
-  issue_comment:
-    types: [created, edited, deleted]
+  issues:
+    types: [opened ]
 jobs:
   job_01:
     runs-on: ubuntu-latest
