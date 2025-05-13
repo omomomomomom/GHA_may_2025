@@ -1,1 +1,22 @@
+name: new wf for checking the events
+on:
+  push:
+  pull_request:
+    branches:
+      - chilld-branch
+      - main
+    types: [opened, synchronize, reopened, closed]
+  issues:
+    types: [opened]
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Check for events 01
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
+          echo $GITHUB_EVENT_NAME
