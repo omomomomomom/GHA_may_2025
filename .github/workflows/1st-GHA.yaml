@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: echo window
-        run: Write-Output "from windows"
+        run: Write-Output "from windows 01"
   run-depended-job:
     runs-on: ubuntu-latest
     needs: run_shell_cmd_job
