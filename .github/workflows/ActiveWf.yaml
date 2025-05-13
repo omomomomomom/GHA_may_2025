@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Check for events 01 child workflow
+      - name: Check for events 01 child workflow edited
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
