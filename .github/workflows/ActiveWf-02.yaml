@@ -7,7 +7,7 @@ jobs:
   job_01:
     runs-on: ubuntu-latest
     steps:
-      - name: Check event edited 01
+      - name: Check event edited 02
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Workflow name: ${{ github.event.workflow }}"
