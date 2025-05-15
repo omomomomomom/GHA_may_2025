@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+    paths:
       - ".github/workflows/ActiveWf.yaml"
   pull_request:
     types: [opened, synchronize, reopened, closed]
