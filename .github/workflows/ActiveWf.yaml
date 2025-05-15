@@ -1,10 +1,10 @@
 name: new wf for checking the events
 on:
   push:
-  pull_request:
     branches:
-      - chilld-branch
       - main
+      - ".github/workflows/ActiveWf.yaml"
+  pull_request:
     types: [opened, synchronize, reopened, closed]
   issues:
     types: [opened]
