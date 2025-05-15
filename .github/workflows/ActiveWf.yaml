@@ -1,4 +1,4 @@
-name: new wf for checking the events
+name: new wf for checking the events child branch
 on:
   push:
     branches:
