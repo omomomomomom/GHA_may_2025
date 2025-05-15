@@ -2,11 +2,11 @@ name: new wf for checking the events
 on:
   push:
     branches:
-      - chilld-branch
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - chilld-branch
+      - main
   issues:
     types: [opened]
 jobs:
