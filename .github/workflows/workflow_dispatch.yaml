@@ -1,0 +1,10 @@
+name: workflow dispatch manual
+on:
+  workflow_dispatch:
+
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: git checkout ${{ github.ref }}
