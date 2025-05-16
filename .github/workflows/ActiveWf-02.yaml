@@ -1,0 +1,13 @@
+name: workflow event
+on:
+  workflow_run:
+    workflows: [new wf for checking the events]
+    types: [completed]
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check event edited 02
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Workflow name: ${{ github.event.workflow }}"

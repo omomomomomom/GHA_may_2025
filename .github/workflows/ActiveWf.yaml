@@ -13,7 +13,7 @@ jobs:
   job_01:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "child branch"
+      - run: echo "child branch
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Check for events 01 child workflow edited again 01
