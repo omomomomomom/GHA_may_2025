@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        run: echo "input ${{ github.event.inputs.name }}"
+        run: echo "input ${{ github.event.inputs }}"
