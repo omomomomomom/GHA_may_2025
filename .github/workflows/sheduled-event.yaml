@@ -1,1 +1,13 @@
-
+name: stale issue oin wf
+on:
+  schedule:
+    - cron: '0/5 * * * *' # every 5 minutes
+jobs:
+  stale_jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark issue and PR as stale
+        uses: actions/stale@v8
+        with:
+          days-before-stale: 1
+          days-before-close: 1
