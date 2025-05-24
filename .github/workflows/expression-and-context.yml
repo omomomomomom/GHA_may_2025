@@ -1,7 +1,16 @@
 name: test
-on: [push, pull_request]
+on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world! from main"
+      - run: echo "Hello, world!"
+      - run: error
+      - run: echo "This will not run because the previous step failed."
+  test2:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo "This will run only if the previous job succeeded."
+      - run: echo "This will not run because the previous step failed."
