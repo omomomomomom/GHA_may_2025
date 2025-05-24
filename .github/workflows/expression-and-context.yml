@@ -11,7 +11,7 @@ jobs:
   test2:
     continue-on-error: true
     runs-on: ubuntu-latest
-    needs: test
+    #needs: test
     steps:
       - run: echo "This will run only if the previous job succeeded."
       - run: echo "This will not run because the previous step failed."
