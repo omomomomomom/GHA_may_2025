@@ -1,7 +1,20 @@
-name: test
+name: status check
 on: [push, pull_request]
 jobs:
-  test:
+  job-01:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world! from main"
+      - name: step 01
+        run: echo "Hello, World!"
+      - name: step 02
+        run: exit 1
+      - name: step 03
+        if: ${{ failure() }}
+        run: echo "This step runs only if the previous steps failed."
+      - name: step 04
+        run: echo "This step runs only if the previous steps succeeded."
+      - name: step 05
+        run: echo " 2 This step runs only if the previous steps succeeded."
+      - name: step 06
+        if: ${{ always() }}
+        run: echo "This step runs regardless of the previous steps' success or failure."
