@@ -7,10 +7,11 @@ jobs:
       - name: step 01
         run: echo "Hello, World!"
       - name: step 02
+        id: step_02
         run: exit 1
       - name: step 03
-        if: ${{ failure() }}
-        run: echo "This step runs only if the previous steps failed."
+        if: ${{ steps.step_02.outcome == 'failure' }}
+        run: echo "This step runs only if step 02 failed."
       - name: step 04
         run: echo "This step runs only if the previous steps succeeded."
       - name: step 05
