@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step 1
-        run: echo "this will run as 1st step"
+        run: exit 0
       - name: Step 1.1 failure
         run: exit 1
         id: step_1_1
