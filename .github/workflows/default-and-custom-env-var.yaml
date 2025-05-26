@@ -1,1 +1,27 @@
-
+name: wf for the env varailable
+on: [push]
+env:
+  WF_LVL_ENV: "Workflow Level Environment Variable"
+jobs:
+  job_01:
+    if: github.ref == 'refs/heads/chilld-branch'
+    runs-on: ubuntu-latest
+    env:
+      JOB_LVL_ENV: "Job Level Environment Variable"
+    steps:
+      - name: Set environment variable
+        run: |
+          echo "This is a job-level environment variable: $JOB_LVL_ENV"
+          echo "This is a workflow-level environment variable: $WF_LVL_ENV"
+          #echo "This is a step-level environment variable: $STEP_LVL_ENV"
+        env:
+          STEP_LVL_ENV: "Step Level Environment Variable"
+      - name: Use environment variable
+        env:
+          WF_LVL_ENV: "Overridden Workflow Level Environment Variable"
+          JOB_LVL_ENV: "Overridden Job Level Environment Variable"
+        run: |
+          echo "env are overridden"
+          echo "This is a step-level environment variable: $STEP_LVL_ENV"
+          echo "This is a workflow-level environment variable: ${{ env.WF_LVL_ENV }}"
+          echo "This is a step-level environment variable: ${{ env.JOB_LVL_ENV }}"
