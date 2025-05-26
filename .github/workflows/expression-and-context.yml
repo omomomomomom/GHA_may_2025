@@ -15,7 +15,7 @@ jobs:
       - name: Step 3
         run: echo "this will n\ot run as 3rd step"
       - name: Step 4
-        if: failure() && steps.step_1.outcome == 'failure'
+        if: steps.step_1.outcome == 'failure'
         run: echo "This step will run if only step 1.1 fails"
       - name: Step 5
         if: always()
