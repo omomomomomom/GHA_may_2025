@@ -4,11 +4,15 @@ env:
   WF_LVL_ENV: "Workflow Level Environment Variable"
 jobs:
   job_01:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/chilld-branch'
     runs-on: ubuntu-latest
     env:
       JOB_LVL_ENV: "Job Level Environment Variable"
     steps:
+      - name: step-01
+        run: |
+          echo "$STE01_ENV==STEP01 env value" >> "$GITHUB_ENV"
+          echo $STE01_ENV
       - name: Set environment variable
         run: |
           echo "This is a job-level environment variable: $JOB_LVL_ENV"
