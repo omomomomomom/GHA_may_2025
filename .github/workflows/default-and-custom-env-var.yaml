@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: step-01
         run: |
-          echo "STE01_ENV=STEP01 env value" >> "$GITHUB_ENV"
+          echo "STE01_ENV=$(date)" >> "$GITHUB_ENV"
           echo $STE01_ENV
       - name: Set environment variable
         run: |
