@@ -4,7 +4,7 @@ env:
   WF_LVL_ENV: "Workflow Level Environment Variable"
 jobs:
   job_01:
-    if: github.ref == 'refs/heads/chilld-branch'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       JOB_LVL_ENV: "Job Level Environment Variable"
