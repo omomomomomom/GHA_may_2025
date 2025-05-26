@@ -1,4 +1,4 @@
-name: check the status of the steps
+name: check the status of the steps.
 on: [push]
 jobs:
   job-01:
