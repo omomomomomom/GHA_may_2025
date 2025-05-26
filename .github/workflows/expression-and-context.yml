@@ -12,7 +12,7 @@ jobs:
         run: |
           echo "This is a job-level environment variable: $JOB_LVL_ENV"
           echo "This is a workflow-level environment variable: $WF_LVL_ENV"
-          echo: "This is a step-level environment variable: $STEP_LVL_ENV"
+          #echo: "This is a step-level environment variable: $STEP_LVL_ENV"
         env:
           STEP_LVL_ENV: "Step Level Environment Variable"
       - name: Use environment variable
