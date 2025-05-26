@@ -18,6 +18,7 @@ jobs:
           echo "This is a job-level environment variable: $JOB_LVL_ENV"
           echo "This is a workflow-level environment variable: $WF_LVL_ENV"
           #echo "This is a step-level environment variable: $STEP_LVL_ENV"
+          echo $
         env:
           STEP_LVL_ENV: "Step Level Environment Variable"
       - name: Use environment variable
@@ -29,3 +30,4 @@ jobs:
           echo "This is a step-level environment variable: $STEP_LVL_ENV"
           echo "This is a workflow-level environment variable: ${{ env.WF_LVL_ENV }}"
           echo "This is a step-level environment variable: ${{ env.JOB_LVL_ENV }}"
+          echo $STE01_ENV
