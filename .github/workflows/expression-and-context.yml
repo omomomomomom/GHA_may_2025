@@ -1,22 +1,24 @@
-name: check the status of the steps.
+name: wf for the env varailable
 on: [push]
+env:
+  WF_LVL_ENV: "Workflow Level Environment Variable"
 jobs:
-  job-01:
+  job_01:
     runs-on: ubuntu-latest
+    env:
+      JOB_LVL_ENV: "Job Level Environment Variable"
     steps:
-      - name: Step 1
-        run: exit 1
-        id: step_1
-      - name: Step 1.1
-        run: echo "this will run"
-      - name: Step 2
-        if: failure()
-        run: echo "This step will run if the previous step fails"
-      - name: Step 3
-        run: echo "this will n\ot run as 3rd step"
-      - name: Step 4
-        if: || steps.step_1.outcome == 'failure'
-        run: echo "This step will run if only step 1.1 fails"
-      - name: Step 5
-        if: always()
-        run: echo "This is step 5"
+      - name: Set environment variable
+        run: |
+          echo "This is a job-level environment variable: $JOB_LVL_ENV"
+          echo "This is a workflow-level environment variable: $WF_LVL_ENV"
+          echo: "This is a step-level environment variable: $STEP_LVL_ENV"
+        env:
+          STEP_LVL_ENV: "Step Level Environment Variable"
+      - name: Use environment variable
+        env:
+          WF_LVL_ENV: "Overridden Workflow Level Environment Variable"
+          JOB_LVL_ENV: "Overridden Job Level Environment Variable"
+        run: |
+          echo "env are overridden"
+          echo "This is a job-level environment variable: ${{ env.STEP_LVL_ENV }}"
