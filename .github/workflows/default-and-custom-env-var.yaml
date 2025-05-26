@@ -12,8 +12,7 @@ jobs:
       - name: step-01
         run: |
           echo "$STE01_ENV==STEP01 env value" >> "$GITHUB_ENV"
-          echo $STE01_ENV
-          echo "hello 1"
+          echo "$STE01_ENV"
       - name: Set environment variable
         run: |
           echo "This is a job-level environment variable: $JOB_LVL_ENV"
