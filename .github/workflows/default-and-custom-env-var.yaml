@@ -4,7 +4,7 @@ on: [push]
 jobs:
     job_01:
         runs-on: ubuntu-latest
-        environment: production
+        environment: staging
         env:
             env_var: ${{ vars.ENV_VAR }} # Expected: Value of ENV_VAR from organization or repository variables
             repo_var: ${{ vars.REPO_VAR }} # Expected: Value of REPO_VAR from organization or repository variables
