@@ -1,33 +1,21 @@
-name: wf for the env varailable
+name: secretes and variables
+
 on: [push]
-env:
-  WF_LVL_ENV: "Workflow Level Environment Variable"
 jobs:
-  job_01:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    env:
-      JOB_LVL_ENV: "Job Level Environment Variable"
-    steps:
-      - name: step-01
-        run: |
-          echo "STE01_ENV=$(date)" >> "$GITHUB_ENV"
-          echo $STE01_ENV
-      - name: Set environment variable
-        run: |
-          echo "This is a job-level environment variable: $JOB_LVL_ENV"
-          echo "This is a workflow-level environment variable: $WF_LVL_ENV"
-          #echo "This is a step-level environment variable: $STEP_LVL_ENV"
-          echo $STE01_ENV
+    job_01:
+        runs-on: ubuntu-latest
+        environment: production
         env:
-          STEP_LVL_ENV: "Step Level Environment Variable"
-      - name: Use environment variable
-        env:
-          WF_LVL_ENV: "Overridden Workflow Level Environment Variable"
-          JOB_LVL_ENV: "Overridden Job Level Environment Variable"
-        run: |
-          echo "env are overridden"
-          echo "This is a step-level environment variable: $STEP_LVL_ENV"
-          echo "This is a workflow-level environment variable: ${{ env.WF_LVL_ENV }}"
-          echo "This is a step-level environment variable: ${{ env.JOB_LVL_ENV }}"
-          echo $STE01_ENV
+            env_var: ${{vars.ENV_VAR}}
+            repo_var: ${{ vars.REPO_VAR }}
+            repo_secret: ${{ secrets.REPO_SECRET }}
+            prod_secret: ${{ secrets.PROD_SECRETE }}
+            staging_secret: ${{ secrets.STAG_SECRET }}
+        steps:
+            - name: step 01
+              run: |
+                    echo "This is a env variable: $env_var"
+                    echo "This is a repo variable: $repo_var"
+                    echo "This is a repo secret: $repo_secret"
+                    echo "This is a production secret: $prod_secret"
+                    echo "This is a staging secret: $staging_secret"
