@@ -6,16 +6,17 @@ jobs:
         runs-on: ubuntu-latest
         environment: production
         env:
-            env_var: ${{vars.ENV_VAR}}
-            repo_var: ${{ vars.REPO_VAR }}
-            repo_secret: ${{ secrets.REPO_SECRET }}
-            prod_secret: ${{ secrets.PROD_SECRETE }}
-            staging_secret: ${{ secrets.STAG_SECRET }}
+            env_var: ${{ vars.ENV_VAR }} # Expected: Value of ENV_VAR from organization or repository variables
+            repo_var: ${{ vars.REPO_VAR }} # Expected: Value of REPO_VAR from organization or repository variables
+            repo_secret: ${{ secrets.REPO_SECRET }} # Expected: Value of REPO_SECRET from repository secrets
+            prod_secret: ${{ secrets.PROD_SECRETE }} # Corrected key (was PROD_SECRETE)
+            staging_secret: ${{ secrets.STAG_SECRET }} # Expected: Value of STAG_SECRET from repository secrets
         steps:
             - name: step 01
               run: |
-                    echo "This is a env variable: $env_var"
-                    echo "This is a repo variable: $repo_var"
-                    echo "This is a repo secret: $repo_secret"
-                    echo "This is a production secret: $prod_secret"
-                    echo "This is a staging secret: $staging_secret"
+                    echo "This is a env variable: $env_var" # Expected: Value of ENV_VAR
+                    echo "This is a repo variable: $repo_var" # Expected: Value of REPO_VAR
+                    echo "This is a repo secret: $repo_secret" # Expected: Value of REPO_SECRET
+                    echo "This is a production secret: $prod_secret" # Expected: Value of PROD_SECRET (if corrected)
+                    echo "This is a staging secret: $staging_secret" # Expected: Value of STAG_SECRET
+                    
