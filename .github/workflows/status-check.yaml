@@ -5,6 +5,7 @@ on:
       - main
 jobs:
   job-02:
+  continue-on-error: true
     runs-on: ubuntu-latest
     steps:
     - name: step-01
@@ -24,7 +25,6 @@ jobs:
       if: always()
       run: echo "This is step 06, it will run regardless of previous step outcomes"
     - name: step-07
-      continue-on-error: true
       run: echo "This is step 07, it will continue on error"
     - name: step-08
       if: success()
