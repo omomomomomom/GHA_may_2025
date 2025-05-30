@@ -2,12 +2,12 @@ name: sample-workflow
 on: [push]
 jobs:
   job01:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Run a script
         run: echo "This is a sample workflow step"
       - run: exit 1
+        continue-on-error: true
       - run: echo "step after exit 1"
   job02:
     runs-on: ubuntu-latest
