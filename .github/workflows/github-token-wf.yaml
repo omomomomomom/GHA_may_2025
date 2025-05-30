@@ -1,0 +1,22 @@
+name: github token secrete
+on: [push]
+jobs:
+  job-01:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: step 01
+        run: echo "This is step 01"
+      - name: using github script
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              title: 'New issue from GitHub Script',
+              body: 'This issue was created using the GitHub Script action.'
+            })
