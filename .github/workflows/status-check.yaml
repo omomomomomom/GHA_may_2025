@@ -1,6 +1,6 @@
 name: status-check
 on:
-  ppush:
+  push:
     branches:
       - main
 jobs:
