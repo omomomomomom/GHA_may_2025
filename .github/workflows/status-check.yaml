@@ -5,7 +5,6 @@ on:
       - main
 jobs:
   job-02:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
     - name: step-01
@@ -13,6 +12,7 @@ jobs:
     - name: step-02
       id: step-02
       run: exit 1
+      continue-on-error: true
     - name: step-03
       if: failure()
       run: echo "This is step 03, but it will not run because step 02 failed"
