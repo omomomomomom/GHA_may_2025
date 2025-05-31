@@ -20,7 +20,7 @@ jobs:
       fail-fast: true
     runs-on: ${{ matrix.os }}
     steps:
-      - if: "matrix.name == 'job_01_ubuntu' &&matrix.name == 'job_01_windows'"
+      - if: matrix.name == 'job_01_ubuntu' || matrix.name == 'job_01_windows'
         run: exit 1
       - name: step tp o/p the name of jobs
         run: echo "${{toJson(matrix)}}"
