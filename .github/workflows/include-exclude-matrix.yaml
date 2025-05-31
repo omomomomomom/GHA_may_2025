@@ -1,0 +1,19 @@
+name: inclute and exclude in matrix
+on: [push]
+jobs:
+  job_01:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [16, 18]
+        include:
+          - os: ubuntu-latest
+            name: job_01_ubuntu
+          - os: windows-latest
+            node: 19
+            name: job_01_windows
+        
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: step tp o/p the name of jobs
+        run: echo "This job is running on ${{ matrix.os }} with Node.js version ${{ matrix.node }}"
