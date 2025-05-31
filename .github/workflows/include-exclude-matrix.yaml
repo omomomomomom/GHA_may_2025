@@ -12,6 +12,9 @@ jobs:
           - os: windows-latest
             node: 19
             name: job_01_windows
+        exclude:
+          - os: macos-latest
+            node: 16
         
     runs-on: ${{ matrix.os }}
     steps:
