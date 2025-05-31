@@ -1,6 +1,7 @@
 name: inclute and exclude in matrix
 on: [push]
 jobs:
+  continue-on-error: true
   job_01:
     strategy:
       matrix:
