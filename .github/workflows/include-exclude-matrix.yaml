@@ -16,4 +16,4 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: step tp o/p the name of jobs
-        run: echo "This job is running on ${{ matrix.os }} with Node.js version ${{ matrix.node }}"
+        run: echo "${{toJson(matrix)}}"
