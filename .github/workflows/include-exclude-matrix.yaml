@@ -16,12 +16,10 @@ jobs:
         exclude:
           - os: macos-latest
             node: 16
-    fail-fast: false
-
+      fail-fast: true
     runs-on: ${{ matrix.os }}
     steps:
       - if: "matrix.name == 'job_01_ubuntu'"
         run: exit 1
       - name: step tp o/p the name of jobs
         run: echo "${{toJson(matrix)}}"
-
