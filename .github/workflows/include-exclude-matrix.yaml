@@ -1,8 +1,8 @@
-name: inclute and exclude in matrix
+name: include and exclude in matrix
 on: [push]
 jobs:
-  continue-on-error: true
   job_01:
+    continue-on-error: ${{ matrix.name == 'job_01_ubuntu' }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
