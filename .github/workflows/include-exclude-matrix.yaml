@@ -9,6 +9,7 @@ jobs:
         include:
           - os: ubuntu-latest
             name: job_01_ubuntu
+            node: 19
           - os: windows-latest
             node: 19
             name: job_01_windows
