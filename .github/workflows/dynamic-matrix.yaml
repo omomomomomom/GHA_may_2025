@@ -33,7 +33,7 @@ jobs:
           echo "${{ steps.step_01.outputs.key01 }}"
           echo "${{ steps.step_02.outputs.key02 }}"
   job_02:
-    continue-on-error: ${{ matrix.node-version==19}}
+    continue-on-error: ${{ matrix.node-version==16}}
     needs: job_01
     strategy:
       matrix:
