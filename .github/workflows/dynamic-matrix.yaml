@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step 01
-        run: echo "key01=value 01" >> $GITHUB_OUTPUT
+        run: echo "key01=omkar" >> $GITHUB_OUTPUT
         id: step_01
-      - run: echo "key02=value 02" >> $GITHUB_OUTPUT
+      - run: echo "key02=babar" >> $GITHUB_OUTPUT
         id: step_02
       - name: step 02
         run: |
