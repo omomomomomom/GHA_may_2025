@@ -44,5 +44,5 @@ jobs:
         run: |
           echo ${{ matrix.os }} and ${{ matrix.node-version }}
       - name: step 02
-        if: ${{matrix.os}}==windows-latest
+        if: ${{matrix.os=='windows-latest'}}
         run: exit 1
