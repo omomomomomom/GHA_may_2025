@@ -14,7 +14,7 @@ jobs:
   job_01:
     runs-on: ubuntu-latest
     outputs:
-      matrix-array: ${{ steps.convert_to_array.outputs.result) }}
+      matrix-array: ${{ steps.convert_to_array.outputs.result }}
     steps:
       - name: convert to array
         uses: actions/github-script@v6
