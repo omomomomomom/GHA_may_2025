@@ -23,14 +23,15 @@ jobs:
           script: "return {os: context.payload.inputs['os'].split(','), node-version: context.payload.inputs['node-version'].split(',')}"
           result-encoding: json
       - name: step 01
-        run: echo "key01=value 01" >> $GITHUB_OUTPUT
         id: step_01
-      - run: echo "key02=value 02" >> $GITHUB_OUTPUT
-        id: step_02
+        run: echo "key01=value 01" >> $GITHUB_OUTPUT
       - name: step 02
+        id: step_02
+        run: echo "key02=value 02" >> $GITHUB_OUTPUT
+      - name: print outputs
         run: |
-          echo ${{steps.step_02.outputs.key02}}
-          echo ${{steps.step_01.outputs.key01}} 
+          echo "${{ steps.step_01.outputs.key01 }}"
+          echo "${{ steps.step_02.outputs.key02 }}"
   job_02:
     needs: job_01
     strategy:
