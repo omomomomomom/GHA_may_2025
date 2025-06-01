@@ -1,45 +1,44 @@
-name: Dynamic Matrix
-on:
+name: output sample 
+on: 
   workflow_dispatch:
     inputs:
       os:
-        description: Operating Systems
-        default: "windows-latest,ubuntu-latest"
-        type: string
+        description: 'Operating System'
+        required: true
+        default: 'ubuntu-latest,windows-latest'
       node-version:
-        description: Node Version
-        default: "14,15,16"
-        type: string
-
+        description: 'Node.js version'
+        required: true
+        default: '16,18'
 jobs:
-  prepare-matrix:
+  job_01:
     runs-on: ubuntu-latest
     outputs:
-      matrix-arrays: ${{ steps.matrix-arrays.outputs.result }}
+      matrix-array: ${{ steps.convert_to_array.outputs.result) }}
     steps:
-      - uses: actions/github-script@v6
-        id: matrix-arrays
+      - name: convert to array
+        uses: actions/github-script@v6
+        id: convert_to_array
         with:
-          script: "return {os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
+          script: "return {os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',')}"
           result-encoding: json
-      - run: echo '${{ steps.matrix-arrays.outputs.result }}'
-      - run: echo "step-output=value" >> $GITHUB_OUTPUT
-        id: step-1
-      - run: echo "step-output=value 2" >> $GITHUB_OUTPUT
-        id: step-2
-      - run: |
-          echo '${{ steps.step-1.outputs.step-output }}'
-          echo '${{ steps.step-2.outputs.step-output }}'
-  node-matrix:
-    needs: prepare-matrix
+      - name: step 01
+        id: step_01
+        run: echo "key01=value 01" >> $GITHUB_OUTPUT
+      - name: step 02
+        id: step_02
+        run: echo "key02=value 02" >> $GITHUB_OUTPUT
+      - name: print outputs
+        run: |
+          echo "${{ steps.step_01.outputs.key01 }}"
+          echo "${{ steps.step_02.outputs.key02 }}"
+  job_02:
+    needs: job_01
     strategy:
       matrix:
-        os: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).os }}
-        node-version: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).node-version }}
+        os: ${{fromJson(needs.job_01.outputs.matrix-array).os}}
+        node-version: ${{fromJson(needs.job_01.outputs.matrix-array).node-version}}
     runs-on: ${{ matrix.os }}
     steps:
-      - run: node -v
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: node -v
+      - name: step 01
+        run: echo ${{ matrix.os }} and ${{ matrix.node-version }}
