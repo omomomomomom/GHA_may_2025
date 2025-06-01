@@ -11,5 +11,5 @@ jobs:
         id: step_02
       - name: step 02
         run: |
-          echo ${{steps.step_02.outputs.key02}} >> $GITHUB_OUTPUT
-          echo ${{steps.step_01.outputs.key01}} >> $GITHUB_OUTPUT
+          echo ${{steps.step_02.outputs.key02}}
+          echo ${{steps.step_01.outputs.key01}} 
