@@ -1,15 +1,43 @@
 name: output sample 
-on: [push]
+on: 
+  workflow_dispatch:
+    inputs:
+      os:
+        description: 'Operating System'
+        required: true
+        default: 'ubuntu-latest,windows-latest'
+      node-version:
+        description: 'Node.js version'
+        required: true
+        default: '16,18'
 jobs:
   job_01:
     runs-on: ubuntu-latest
+    outputs:
+      matrix-array: ${{ toJson(steps.convert_to_array.outputs.result) }}
     steps:
+      - name: convert to array
+        uses: actions/github-script@v6
+        id: convert_to_array
+        with:
+          script: "return {os: context.payload.inputs['os'].split(','), node: context.payload.inputs['node-version'].split(',')}"
+          result-encoding: json
       - name: step 01
-        run: echo "key01=omkar" >> $GITHUB_OUTPUT
+        run: echo "key01=value 01" >> $GITHUB_OUTPUT
         id: step_01
-      - run: echo "key02=babar" >> $GITHUB_OUTPUT
+      - run: echo "key02=value 02" >> $GITHUB_OUTPUT
         id: step_02
       - name: step 02
         run: |
           echo ${{steps.step_02.outputs.key02}}
           echo ${{steps.step_01.outputs.key01}} 
+  job_02:
+    needs: job_01
+    strategy:
+      matrix:
+        os: ${{fromJson(needs.job_01.outputs.matrix-array).os}}
+        node-version: ${{fromJson(needs.job_01.outputs.matrix-array).node-version}}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: step 01
+        run: echo ${{ matrix.os }} and ${{ matrix.node-version }}
