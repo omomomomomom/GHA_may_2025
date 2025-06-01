@@ -20,7 +20,7 @@ jobs:
         uses: actions/github-script@v6
         id: convert_to_array
         with:
-          script: "return {os: context.payload.inputs['os'].split(','), node: context.payload.inputs['node-version'].split(',')}"
+          script: "return {os: context.payload.inputs['os'].split(','), node-version: context.payload.inputs['node-version'].split(',')}"
           result-encoding: json
       - name: step 01
         run: echo "key01=value 01" >> $GITHUB_OUTPUT
