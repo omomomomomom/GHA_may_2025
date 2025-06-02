@@ -1,1 +1,14 @@
-
+name: using required wf
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Mention the name
+        required: true
+        type: string
+jobs:
+  job_03:
+    uses: GHA_new_2025_01/.github/workflows/reusable-wf.yaml@main
+    with:
+      name: ${{ github.event.inputs.name }}
+      secrete-token: ${{ secrets.SECRET_TOKEN }}
