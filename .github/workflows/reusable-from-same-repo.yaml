@@ -1,14 +1,15 @@
 name: reusable from same repo
 on:
   workflow_call:
-    inputs:
-      game:
-        description: Mention the game
-        required: true
-        type: string
+    outputs:
+      date:
+        value: ${{jobs.job_01_same_repo.outputs.date}}
 jobs:
   job_01_same_repo:
     runs-on: ubuntu-latest
+    outputs:
+      date: ${{steps.date-op.outputs.date}}
     steps:
-      - name: Print game
-        run: echo "Game is ${{ inputs.game }}"
+      - run: echo "date=$(date)" >> $GITHUB_OUTPUT
+        id: date-op
+    
