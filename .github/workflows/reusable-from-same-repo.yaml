@@ -8,7 +8,7 @@ jobs:
   job_01_inherate:
     uses: omomomomomom/GHA_new_2025_01/.github/workflows/reusable-wf.yaml@main
     with:
-      name: ${{ github.event.inputs.name }}
+      name: 'omkar'
       secrete-token: ${{ vars.SECRET_TOKEN }}
   job_01_same_repo:
     runs-on: ubuntu-latest
