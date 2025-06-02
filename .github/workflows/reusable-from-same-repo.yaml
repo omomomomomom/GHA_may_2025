@@ -1,0 +1,14 @@
+name: reusable from same repo
+on:
+  workflow_call:
+    inputs:
+      game:
+        description: Mention the game
+        required: true
+        type: string
+jobs:
+  job_01_same_repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print game
+        run: echo "Game is ${{ inputs.game }}"
