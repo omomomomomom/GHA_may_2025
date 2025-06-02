@@ -14,8 +14,6 @@ jobs:
       secrete-token: ${{ vars.SECRET_TOKEN }}
   job_04:
     uses: ./.github/workflows/reusable-from-same-repo.yaml
-    with:
-      name: ${{ github.event.inputs.name }}
   job_05:
     runs-on: ubuntu-latest
     needs: job_04
