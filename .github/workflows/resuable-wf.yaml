@@ -11,4 +11,4 @@ jobs:
     uses: omomomomomom/GHA_new_2025_01/.github/workflows/reusable-wf.yaml@main
     with:
       name: ${{ github.event.inputs.name }}
-      secrete-token: ${{ secrets.SECRET_TOKEN }}
+      secrete-token: ${{ variables.SECRET_TOKEN }}
