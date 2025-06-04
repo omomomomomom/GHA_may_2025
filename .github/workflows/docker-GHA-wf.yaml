@@ -1,0 +1,22 @@
+name: using docker
+on: [workflow_dispatch]
+
+jobs:
+    job_01:
+        runs-on: ubuntu-latest
+        container: 
+            image: node:24-alpine3.21
+            env:
+                CONTAINER_ENV_VAR: "Container Level Environment Variable"
+            ports: 
+                - 3000
+            volumes:
+                - /tmp:/tmp
+            #options: --entrypoint /bin/sh 
+
+        steps:
+            - run: |
+                node --version
+                cat /etc/os-release
+            - name: log env var
+              run: echo "${{ env.CONTAINER_ENV_VAR }}"
