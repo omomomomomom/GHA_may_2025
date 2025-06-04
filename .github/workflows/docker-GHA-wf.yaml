@@ -20,3 +20,11 @@ jobs:
                 cat /etc/os-release
             - name: log env var
               run: echo "$CONTAINER_ENV_VAR"
+            - name: run under diff docker
+              uses: docker://node:24-bookworm-slim
+              with:
+                entrypoint: /bin/sh/node
+                args: -v
+            - uses: docker://node:24-bookworm-slim
+              with:
+                args: -v
