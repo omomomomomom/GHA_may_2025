@@ -19,4 +19,4 @@ jobs:
                 node --version
                 cat /etc/os-release
             - name: log env var
-              run: echo "${{ env.CONTAINER_ENV_VAR }}"
+              run: echo "$CONTAINER_ENV_VAR"
