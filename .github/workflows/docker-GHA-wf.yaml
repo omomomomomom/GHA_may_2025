@@ -21,9 +21,12 @@ jobs:
             - name: log env var
               run: echo "$CONTAINER_ENV_VAR"
             - name: run under diff docker
-              uses: docker://node:24-bookworm-slim
+              uses: docker://node:22-alpine3.21
               with:
+                entrypoint: /bin/sh/node
                 args: -v
             - uses: docker://node:24-bookworm-slim
               with:
-                args: -v
+                args: -p 3+4
+
+            
