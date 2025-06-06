@@ -17,8 +17,13 @@ jobs:
              with:
                 entrypoint: /bin/sh
                 args: |
-                    -c " pwd && chmod +x /github/workspace/script.sh && /github/workspace/script.sh 'hello world of GHA' && mount | grep '/github/workspace'"
+                    -c  pwd
+                        chmod +x /github/workspace/script.sh
+                        /github/workspace/script.sh 'hello world of GHA' 
+                        mount | grep '/github/workspace'
            - name: Check volume mount points
              run: |
               pwd
-              mount
+              mount | grep '/__w/GHA_may_2025/GHA_may_2025'
+              cd '/__w/GHA_may_2025/GHA_may_2025'
+              ls -a '/__w/GHA_may_2025/GHA_may_2025'
