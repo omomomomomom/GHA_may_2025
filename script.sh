@@ -3,3 +3,4 @@
 # Check if the script is run with root privileges
 echo "$@"
 node -v
+echo "omkar"
