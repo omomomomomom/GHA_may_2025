@@ -21,7 +21,7 @@ jobs:
             - name: run under diff docker
               uses: docker://node:24-bookworm-slim
               with:
-                args: -ve
+                args: -v
             - uses: docker://node:24-bookworm-slim
               with:
                 checkout: cat
