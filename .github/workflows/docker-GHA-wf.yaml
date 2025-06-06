@@ -21,9 +21,9 @@ jobs:
             - name: run under diff docker
               uses: docker://node:24-bookworm-slim
               with:
-                entrypoint: /bin/sh/node
+                entrypoint: echo "text in step docker" > step.txt
                 args: -v
             - uses: docker://node:24-bookworm-slim
               with:
                 checkout: cat
-                args: text.txt
+                args: text.txt step.txt
