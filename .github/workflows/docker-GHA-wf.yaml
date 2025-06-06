@@ -20,9 +20,11 @@ jobs:
               run: echo "$CONTAINER_ENV_VAR"
             - name: run under diff docker
               uses: docker://node:22-alpine
+              env:
+                CONTAINER_ENV_VAR: ${{ env.CONTAINER_ENV_VAR }}
               with:
                 entrypoint: sh
-                args: -c "echo 'this is step container contain:$CONTAINER_ENV_VAR' > /github/workspace/step.txt && ls -a"
+                args: -c "echo 'this is step container contain:$CONTAINER_ENV_VAR' > /github/workspace/step.txt && ls -a && pwd"
             - uses: docker://node:24-bookworm-slim
               with:
                 entrypoint: cat
