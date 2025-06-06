@@ -11,21 +11,10 @@ jobs:
             ports: 
                 - 3000
         steps:
-            - name: create the text doc on job lvl container
-              run: echo "This is a job-level container environment variable:$CONTAINER_ENV_VAR" > text.txt
-            - run: |
-                node --version
-                cat /etc/os-release
-            - name: log env var
-              run: echo "$CONTAINER_ENV_VAR"
-            - name: run under diff docker
-              uses: docker://node:22-alpine
-              env:
-                CONTAINER_ENV_VAR: ${{ env.CONTAINER_ENV_VAR }}
-              with:
-                entrypoint: sh
-                args: -c "echo 'this is step container contain:$CONTAINER_ENV_VAR' > /github/workspace/step.txt && ls -a && pwd"
-            - uses: docker://node:24-bookworm-slim
-              with:
-                entrypoint: cat
-                args: text.txt step.txt
+           - uses: actions/checkout@v3
+           - name: run in docker
+             uses: docker://node:24-alpine3.21
+             with:
+                entrypoint: ./script.sh
+                args: |
+                    "hello world from GHA"
