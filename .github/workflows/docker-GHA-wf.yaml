@@ -19,10 +19,11 @@ jobs:
             - name: log env var
               run: echo "$CONTAINER_ENV_VAR"
             - name: run under diff docker
-              uses: docker://node:24-bookworm-slim
+              uses: docker://node:22-alpine
               with:
-                args: -v
+                entrypoint: echo "this is step container contain:$CONTAINER_ENV_VAR" > step.txt
+                args: ls -a
             - uses: docker://node:24-bookworm-slim
               with:
                 entrypoint: cat
-                args: text.txt
+                args: text.txt step.txt
