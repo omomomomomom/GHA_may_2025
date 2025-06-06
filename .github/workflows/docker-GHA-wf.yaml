@@ -21,4 +21,4 @@ jobs:
            - name: Check volume mount points
              run: |
               pwd
-              mount | grep '/github/workspace'
+              mount
