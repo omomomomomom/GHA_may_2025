@@ -24,6 +24,5 @@ jobs:
            - name: Check volume mount points
              run: |
               pwd
-              mount | grep '/__w/GHA_may_2025/GHA_may_2025'
-              cd '/__w/GHA_may_2025/GHA_may_2025'
+              mount | grep '/__w/GHA_may_2025/GHA_may_2025' 
               ls -a '/__w/GHA_may_2025/GHA_may_2025'
