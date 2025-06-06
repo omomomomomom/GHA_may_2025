@@ -7,7 +7,7 @@ jobs:
         container: 
             image: node:24-alpine3.21
             env:
-                CONTAINER_ENV_VAR: "job Container Level Environment Variable"
+                CONTAINER_ENV_VAR: "JOB_ENV_VAR_he_bhai"
             ports: 
                 - 3000
         steps:
@@ -22,7 +22,7 @@ jobs:
               uses: docker://node:22-alpine
               with:
                 entrypoint: sh
-                args: -c "echo 'this is step container contain' > /github/workspace/step.txt && cat /github/workspace/step.txt"
+                args: -c "echo 'this is step container contain:$CONTAINER_ENV_VAR' > /github/workspace/step.txt && ls -a"
             - uses: docker://node:24-bookworm-slim
               with:
                 entrypoint: cat
