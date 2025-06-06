@@ -24,5 +24,5 @@ jobs:
                 args: -v
             - uses: docker://node:24-bookworm-slim
               with:
-                checkout: cat
+                entrypoint: cat
                 args: text.txt
