@@ -12,7 +12,7 @@ jobs:
                 - 3000
         steps:
             - name: create the text doc on job lvl container
-              run: echo "This is a job-level container environment variable:' '$CONTAINER_ENV_VAR" > text.txt
+              run: echo "This is a job-level container environment variable:$CONTAINER_ENV_VAR" > text.txt
             - run: |
                 node --version
                 cat /etc/os-release
