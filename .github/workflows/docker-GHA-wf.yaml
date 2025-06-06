@@ -21,8 +21,8 @@ jobs:
             - name: run under diff docker
               uses: docker://node:22-alpine
               with:
-                entrypoint: echo "this is step container contain:$CONTAINER_ENV_VAR" > step.txt
-                args: ls -a
+                entrypoint: sh -c
+                args: echo "this is step container contain:$CONTAINER_ENV_VAR" > step.txt && ls -a
             - uses: docker://node:24-bookworm-slim
               with:
                 entrypoint: cat
