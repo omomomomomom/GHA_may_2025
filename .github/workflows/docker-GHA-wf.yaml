@@ -15,7 +15,6 @@ jobs:
            - name: run in docker
              uses: docker://node:24-alpine3.21
              with:
-                entrypoint: ./script.sh
+                entrypoint: /bin/sh
                 args: |
-                    "chmod +x /github/workspace/script.sh"
-                    "hello world of GHA"
+                    -c "chmod +x /github/workspace/script.sh && /github/workspace/script.sh 'hello world of GHA'"
