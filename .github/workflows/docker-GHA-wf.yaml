@@ -25,4 +25,4 @@ jobs:
             - uses: docker://node:24-bookworm-slim
               with:
                 checkout: cat
-                args: text.txt step.txt
+                args: text.txt
