@@ -19,5 +19,5 @@ jobs:
                 args: |
                     -c "pwd && \
                     chmod +x script.sh && \
-                    script.sh 'hello world of GHA' && \
+                    ./script.sh 'hello world of GHA' && \
                     mount | grep '/github/workspace'"
