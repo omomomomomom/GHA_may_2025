@@ -1,4 +1,5 @@
-name: using docker
+name: using docker-slack-notify
+# Description: A GitHub Actions workflow that runs a script in a Docker container and sends a notification to Slack.
 on: [workflow_dispatch]
 
 jobs:
@@ -20,3 +21,11 @@ jobs:
                     -c "chmod +x script.sh && \
                     ./script.sh 'hello world of GHA' && \
                     mount | grep '/github/workspace'"
+           - name: using slack-notify
+             uses: docker://technosophos/slack-notify
+             env:
+                SLACK_WEBHOOK: "${{ secrets.SLACK_WEBHOOK }}"
+                SLACK_USERNAME: "BrigadeBot"
+                SLACK_TITLE: "title goes here"
+                SLACK_MESSAGE: "Actor: ${{ github.actor }} and event: ${{ github.event_name }}"
+                SLACK_COLOR: "#ff69b4"
