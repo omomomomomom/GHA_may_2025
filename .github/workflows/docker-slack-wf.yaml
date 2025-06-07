@@ -1,0 +1,22 @@
+name: using docker
+on: [workflow_dispatch]
+
+jobs:
+    job_01:
+        runs-on: ubuntu-latest
+        container: 
+            image: node:24-alpine3.21
+            env:
+                CONTAINER_ENV_VAR: "JOB_ENV_VAR_he_bhai"
+            ports: 
+                - 3000
+        steps:
+           - uses: actions/checkout@v3
+           - name: run in docker
+             uses: docker://node:24-alpine3.21
+             with:
+                entrypoint: /bin/sh
+                args: |
+                    -c "chmod +x script.sh && \
+                    ./script.sh 'hello world of GHA' && \
+                    mount | grep '/github/workspace'"
