@@ -1,6 +1,10 @@
 # creating the wf using this test-api.yaml file
 name: sednd random joke to slack
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      salck_username:
+        description: 'Slack username'        
 jobs:
   send-joke:
     runs-on: ubuntu-latest
@@ -11,7 +15,7 @@ jobs:
         id: joke
         uses: ./slack-joke/
         with:
-          salck_username: omkar
+          salck_username: ${{ inputs.salck_username }}
           upload_joke: 'true'
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }} 
       - name: display output
