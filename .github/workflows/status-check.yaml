@@ -1,0 +1,30 @@
+name: status-check
+on:
+  push:
+    branches:
+      - main
+jobs:
+  job-02:
+    runs-on: ubuntu-latest
+    steps:
+    - name: step-01
+      run: echo "This is step 01"
+    - name: step-02
+      id: step-02
+      run: exit 1
+    - name: step-03
+      if: failure()
+      run: echo "This is step 03, but it will not run because step 02 failed"
+    - name: step-04
+      if: failure() && steps.step-02.outcome == 'failure'
+      run: echo "This is step 04, it will run because step 02 failed"
+    - name: step-05
+      run: echo "This is step 05"
+    - name: step-06
+      if: always()
+      run: echo "This is step 06, it will run regardless of previous step outcomes"
+    - name: step-07
+      run: echo "This is step 07, it will filed on error"
+    - name: step-08
+      if: success()
+      run: echo "This is step 08, it will run only if all previous steps succeeded"

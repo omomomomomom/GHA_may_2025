@@ -1,0 +1,20 @@
+name: reusable from same repo
+on:
+  workflow_call:
+    outputs:
+      date:
+        value: ${{jobs.job_01_same_repo.outputs.date}}
+jobs:
+  job_01_inherate:
+    uses: omomomomomom/GHA_new_2025_01/.github/workflows/reusable-wf.yaml@main
+    with:
+      name: ${{ github.event.inputs.name }}
+      secrete-token: ${{ vars.SECRET_TOKEN }}
+  job_01_same_repo:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{steps.date-op.outputs.date}}
+    steps:
+      - run: echo "date=$(date)" >> $GITHUB_OUTPUT
+        id: date-op
+    

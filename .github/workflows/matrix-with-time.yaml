@@ -1,0 +1,12 @@
+name: matrix
+on: [push]
+jobs:
+  matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [16, 18]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Run on ${{ matrix.os }}
+        run: echo "Running on ${{ matrix.os }} with Node.js ${{ matrix.node }}"

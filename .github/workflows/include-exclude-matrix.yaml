@@ -1,0 +1,26 @@
+name: include and exclude in matrix
+on: [push]
+jobs:
+  job_01:
+    continue-on-error: ${{ matrix.name == 'job_01_ubuntu' }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [16, 18]
+        include:
+          - os: ubuntu-latest
+            name: job_01_ubuntu
+            node: 19
+          - os: windows-latest
+            node: 19
+            name: job_01_windows
+        exclude:
+          - os: macos-latest
+            node: 16
+      fail-fast: true
+    runs-on: ${{ matrix.os }}
+    steps:
+      - if: matrix.name == 'job_01_ubuntu' || matrix.name == 'job_01_windows'
+        run: exit 1
+      - name: step tp o/p the name of jobs
+        run: echo "${{toJson(matrix)}}"
