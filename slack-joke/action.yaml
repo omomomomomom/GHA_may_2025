@@ -20,10 +20,11 @@ runs:
       shell: bash 
       id: joke
       run: |
-
-        echo "random_joke<<EOF" >> "$GITHUB_OUTPUT"
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "random_joke<<$EOF" >> "$GITHUB_OUTPUT"
         curl -s https://icanhazdadjoke.com/ >> "$GITHUB_OUTPUT"
-        echo "EOF" >> "$GITHUB_OUTPUT"
+        echo "" >> "$GITHUB_OUTPUT"
+        echo "$EOF" >> "$GITHUB_OUTPUT"
     - name: Upload the joke as artifact
       shell: bash
       run: |
