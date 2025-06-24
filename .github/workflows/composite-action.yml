@@ -1,12 +1,7 @@
 
 # creating the wf using this test-api.yaml file
 name: sednd random joke to slack
-on:
-  workflow_dispatch:
-    inputs:
-      salck_username:
-        description: 'Slack username'
-        required: true
+on: [workflow_dispatch]
 jobs:
   send-joke:
     runs-on: ubuntu-latest
