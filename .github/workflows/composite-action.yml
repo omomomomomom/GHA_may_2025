@@ -1,5 +1,6 @@
+
 # creating the wf using this test-api.yaml file
-name: send random joke to slack
+name: sednd random joke to slack
 on:
   workflow_dispatch:
     inputs:
@@ -11,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: joke
         id: joke
-        uses: ./slack-joke
+        uses: ./slack-joke/
         with:
-          salck_username: ${{ inputs.salck_username }}
+          salck_username: 'omkar'
           upload_joke: 'true'
-          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }} 
       - name: display output
         run: |
           echo "The random joke is: ${{ steps.joke.outputs.joke }}"
