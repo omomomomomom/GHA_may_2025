@@ -12,7 +12,11 @@ inputs:
     description: 'Upload the joke as artifact ?'
   slack_webhook_url:
     description: 'Slack webhook URL'
-
+outputs:
+  joke:
+    description: 'The random joke created by the action'
+    value: ${{ steps.joke.outputs.random_joke }} : 
+    
 runs:
   using: 'composite'
   steps:
