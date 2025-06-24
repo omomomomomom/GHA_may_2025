@@ -1,3 +1,4 @@
+
 # We will create the composite action to use in our workflow
 
 name: random joke
@@ -12,7 +13,11 @@ inputs:
     description: 'Upload the joke as artifact ?'
   slack_webhook_url:
     description: 'Slack webhook URL'
-
+outputs:
+  joke:
+    description: 'The random joke created by the action'
+    value: ${{ steps.joke.outputs.random_joke }}
+    
 runs:
   using: 'composite'
   steps:
@@ -20,18 +25,17 @@ runs:
       shell: bash 
       id: joke
       run: |
-
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        echo "random_joke<<EOF" >> "$GITHUB_OUTPUT"
+        echo "random_joke<<$EOF" >> "$GITHUB_OUTPUT"
         curl -s https://icanhazdadjoke.com/ >> "$GITHUB_OUTPUT"
         echo "" >> "$GITHUB_OUTPUT"
-        echo "EOF" >> "$GITHUB_OUTPUT"
+        echo "$EOF" >> "$GITHUB_OUTPUT"
     - name: Upload the joke as artifact
       shell: bash
       run: |
         echo "${{ steps.joke.outputs.random_joke }}" > random-joke.txt
       if: ${{ inputs.upload_joke == 'true' }}
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: random-joke-name
         path: random-joke.txt
