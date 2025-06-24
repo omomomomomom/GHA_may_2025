@@ -11,7 +11,7 @@ jobs:
         id: joke
         uses: ./slack-joke/
         with:
-          slack_username: 'omkar'
+          salck_username: 'omkar'
           upload_joke: 'true'
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }} 
       - name: display output
