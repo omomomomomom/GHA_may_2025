@@ -3,7 +3,7 @@ name: send random joke to slack
 on:
   workflow_dispatch:
     inputs:
-      slack_username:
+      salck_username:
         description: 'Slack username'
         required: true
 jobs:
@@ -16,7 +16,7 @@ jobs:
         id: joke
         uses: ./slack-joke
         with:
-          slack_username: ${{ inputs.slack_username }}
+          salck_username: ${{ inputs.salck_username }}
           upload_joke: 'true'
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }}
       - name: display output
