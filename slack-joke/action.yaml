@@ -40,13 +40,9 @@ runs:
         name: random-joke-name
         path: random-joke.txt
     - name: Post the joke to Slack
-      shell: bash
-      run: |
-        curl -X POST -H 'Content-type: application/json' --data '{"text": "${{ steps.joke.outputs.random_joke }}"}' ${{ inputs.slack_webhook_url }}
-      if: ${{ inputs.slack_webhook_url != '' }}
+      uses: docker://technosophos/slack-notify
       env:
-        SLACK_WEBHOOK_URL: ${{ inputs.slack_webhook_url }}
-        SLACK_TITLE: 'Random Joke'
-        SLACK_MESSAGE: "$inputs.salck_username && Format('{0}{1}{2}', '@', $inputs.salck_username, ${{ steps.joke.outputs.random_joke }}) || steps.joke.outputs.random_joke }}"
-        SLACK_COLOR: '#36a64f'
-        SLACK_ICON: ':laughing:'
+        SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
+        SLACK_TITLE: Random Joke
+        SLACK_MESSAGE: "${{ inputs.salck_username && format('{0}{1} {2}', '@', inputs.salck_username, steps.joke.outputs.random_joke) || steps.joke.outputs.random_joke }}"
+        SLACK_COLOR: "#723fc4"
