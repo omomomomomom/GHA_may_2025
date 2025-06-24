@@ -2,7 +2,7 @@
 
 name: random joke
 author: omkar
-description:this jobe will create a random joke
+description: this jobe will create a random joke
 
 inputs:
   salck_username:
@@ -31,7 +31,7 @@ runs:
       run: |
         echo "${{ steps.joke.outputs.random_joke }}" > random-joke.txt
       if: ${{ inputs.upload_joke == 'true' }}
-      uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v3
       with:
         name: random-joke-name
         path: random-joke.txt
