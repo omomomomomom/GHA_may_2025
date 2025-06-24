@@ -1,1 +1,48 @@
+# We will create the composite action to use in our workflow
 
+name: random joke
+author: omkar
+description:this jobe will create a random joke
+
+inputs:
+  salck_username:
+    description: 'Slack username'
+    required: true
+  upload_joke:
+    description: 'Upload the joke as artifact ?'
+  slack_webhook_url:
+    description: 'Slack webhook URL'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Create a random joke
+      shell: bash 
+      id: joke
+      run: |
+
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "random_joke<<EOF" >> "$GITHUB_OUTPUT"
+        curl -s https://icanhazdadjoke.com/ >> "$GITHUB_OUTPUT"
+        echo "" >> "$GITHUB_OUTPUT"
+        echo "EOF" >> "$GITHUB_OUTPUT"
+    - name: Upload the joke as artifact
+      shell: bash
+      run: |
+        echo "${{ steps.joke.outputs.random_joke }}" > random-joke.txt
+      if: ${{ inputs.upload_joke == 'true' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: random-joke-name
+        path: random-joke.txt
+    - name: Post the joke to Slack
+      shell: bash
+      run: |
+        curl -X POST -H 'Content-type: application/json' --data '{"text": "${{ steps.joke.outputs.random_joke }}"}' ${{ inputs.slack_webhook_url }}
+      if: ${{ inputs.slack_webhook_url != '' }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ inputs.slack_webhook_url }}
+        SLACK_TITLE: 'Random Joke'
+        SLACK_MESSAGE: "$inputs.slack_username && Format('{0}{1}{2}', '@', $inputs.slack_username, ${{ steps.joke.outputs.random_joke }}) || steps.joke.outputs.random_joke }}"
+        SLACK_COLOR: '#36a64f'
+        SLACK_ICON: ':laughing:'
